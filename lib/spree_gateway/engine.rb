@@ -33,6 +33,8 @@ module SpreeGateway
     end
 
     def self.activate
+      ActiveMerchant::Billing::Base.const_set('OFFSITE_PAYMENT_EXTRACTION_MESSAGE', 'something')
+
       if SpreeGateway::Engine.frontend_available?
         Rails.application.config.assets.precompile += [
           'lib/assets/javascripts/spree/frontend/spree_gateway.js',
